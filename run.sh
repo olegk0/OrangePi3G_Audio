@@ -1,3 +1,5 @@
 #!/bin/bash
 
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:../:./ ./testAudio file_example_MP3_700KB.mp3
+#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:../:./ ./testAudio headphone mp3 $1
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:../:./ ./testAudio headphone fm $1
+
