@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
     if (strcmp(argv[1], "headphone") == 0) {
         output_device = AUDIO_DEVICE_OUT_WIRED_HEADPHONE;
     } else if (strcmp(argv[1], "speaker") == 0) {
-        output_device = AUDIO_DEVICE_OUT_SPEAKER;
+        output_device = AUDIO_DEVICE_OUT_EARPIECE;  // AUDIO_DEVICE_OUT_SPEAKER;
     } else {
         print_usage();
         return 0;
@@ -108,19 +108,9 @@ int main(int argc, char **argv) {
         ret = audioMTKHardware.setMasterVolume(0.5f);  //
         printf("setMasterVolume, ret:%d\n", ret);
 
-#if 1
         AudioFtm *mAudioFtmInstance = AudioFtm::getInstance();
         mAudioFtmInstance->Audio_FM_I2S_Play(fm_on);
-#else
-        int par1 = AUDIO_USER_TEST;
-        /*
-        0x100 - Fm Enable
-        0x101 - Fm Disable
-        */
-        int par2 = fm_on ? 0x100 : 0x101;
-        ret = audioMTKHardware.SetAudioCommand(par1, par2);
-        printf("SetAudioCommonCommand, ret:%d\n", ret);
-#endif
+
         sleep(1);
     } else {
         printf("======================2======================\n");
